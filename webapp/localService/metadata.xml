@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://virutal.https.dgw:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='DV4')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZC_ORDERLIST_PREV_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="ZC_ORDERLIST_PREVType" sap:label="Consumption View for Prevent Order List" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="OrderNo"/>
+                </Key>
+                <Property Name="OrderNo" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Order"/>
+                <Property Name="WorkCenter" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Main work center"/>
+                <Property Name="OrderType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Order Type"/>
+                <Property Name="NotificationNo" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Notification"/>
+                <Property Name="OrderCreatedDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created on"/>
+                <Property Name="ShortDescription" Type="Edm.String" MaxLength="40" sap:label="Description"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Entered by"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="EquipmentNo" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Equipment"/>
+                <Property Name="EquipmentDescription" Type="Edm.String" MaxLength="40" sap:label="Equipment Description"/>
+                <NavigationProperty Name="to_OrderType" Relationship="ZC_ORDERLIST_PREV_CDS.assoc_B5F53DCE7FD0E7F0E6699009C76C3752" FromRole="FromRole_assoc_B5F53DCE7FD0E7F0E6699009C76C3752" ToRole="ToRole_assoc_B5F53DCE7FD0E7F0E6699009C76C3752"/>
+                <NavigationProperty Name="to_Plant" Relationship="ZC_ORDERLIST_PREV_CDS.assoc_D512010D11F89B890FA61D16CF3A74A7" FromRole="FromRole_assoc_D512010D11F89B890FA61D16CF3A74A7" ToRole="ToRole_assoc_D512010D11F89B890FA61D16CF3A74A7"/>
+            </EntityType>
+            <EntityType Name="ZI_HARDCODEENTRIESType" sap:label="Basic View for Order Master Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PrimaryKey"/>
+                    <PropertyRef Name="Subkey1"/>
+                    <PropertyRef Name="Subkey2"/>
+                    <PropertyRef Name="Subkey3"/>
+                    <PropertyRef Name="SeqNo"/>
+                </Key>
+                <Property Name="PrimaryKey" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="PrimaryKey"/>
+                <Property Name="Subkey1" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="SubKey1"/>
+                <Property Name="Subkey2" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="SubKey2"/>
+                <Property Name="Subkey3" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="SubKey3"/>
+                <Property Name="SeqNo" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="NonNegative" sap:label="Sequence Number"/>
+                <Property Name="Sign" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="RangeSign"/>
+                <Property Name="Opti" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="RangeOption"/>
+                <Property Name="Low" Type="Edm.String" MaxLength="45" sap:label="LowValue"/>
+                <Property Name="High" Type="Edm.String" MaxLength="45" sap:label="HighValue"/>
+                <Property Name="Indicator1" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag"/>
+                <Property Name="Indicator2" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag"/>
+                <Property Name="Indicator3" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag"/>
+                <Property Name="Indicator4" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag"/>
+                <Property Name="AddtnlData" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="AdditionalData"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="40" sap:label="Comment"/>
+                <Property Name="MaintUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="MaintDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Current Date"/>
+                <Property Name="MaintTime" Type="Edm.Time" Precision="0" sap:label="Time"/>
+            </EntityType>
+            <EntityType Name="ZC_PM_GETPLANTType" sap:label="Get PM Plant from hardcode table" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+            </EntityType>
+            <Association Name="assoc_D512010D11F89B890FA61D16CF3A74A7" sap:content-version="1">
+                <End Type="ZC_ORDERLIST_PREV_CDS.ZC_ORDERLIST_PREVType" Multiplicity="1" Role="FromRole_assoc_D512010D11F89B890FA61D16CF3A74A7"/>
+                <End Type="ZC_ORDERLIST_PREV_CDS.ZC_PM_GETPLANTType" Multiplicity="1" Role="ToRole_assoc_D512010D11F89B890FA61D16CF3A74A7"/>
+            </Association>
+            <Association Name="assoc_B5F53DCE7FD0E7F0E6699009C76C3752" sap:content-version="1">
+                <End Type="ZC_ORDERLIST_PREV_CDS.ZC_ORDERLIST_PREVType" Multiplicity="1" Role="FromRole_assoc_B5F53DCE7FD0E7F0E6699009C76C3752"/>
+                <End Type="ZC_ORDERLIST_PREV_CDS.ZI_HARDCODEENTRIESType" Multiplicity="1" Role="ToRole_assoc_B5F53DCE7FD0E7F0E6699009C76C3752"/>
+            </Association>
+            <EntityContainer Name="ZC_ORDERLIST_PREV_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZC_ORDERLIST_PREV" EntityType="ZC_ORDERLIST_PREV_CDS.ZC_ORDERLIST_PREVType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_HARDCODEENTRIES" EntityType="ZC_ORDERLIST_PREV_CDS.ZI_HARDCODEENTRIESType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_PM_GETPLANT" EntityType="ZC_ORDERLIST_PREV_CDS.ZC_PM_GETPLANTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_B5F53DCE7FD0E7F0E6699009C76C3752" Association="ZC_ORDERLIST_PREV_CDS.assoc_B5F53DCE7FD0E7F0E6699009C76C3752" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_ORDERLIST_PREV" Role="FromRole_assoc_B5F53DCE7FD0E7F0E6699009C76C3752"/>
+                    <End EntitySet="ZI_HARDCODEENTRIES" Role="ToRole_assoc_B5F53DCE7FD0E7F0E6699009C76C3752"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_D512010D11F89B890FA61D16CF3A74A7" Association="ZC_ORDERLIST_PREV_CDS.assoc_D512010D11F89B890FA61D16CF3A74A7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_ORDERLIST_PREV" Role="FromRole_assoc_D512010D11F89B890FA61D16CF3A74A7"/>
+                    <End EntitySet="ZC_PM_GETPLANT" Role="ToRole_assoc_D512010D11F89B890FA61D16CF3A74A7"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="https://virutal.https.dgw:443/sap/opu/odata/sap/ZC_ORDERLIST_PREV_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://virutal.https.dgw:443/sap/opu/odata/sap/ZC_ORDERLIST_PREV_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,41 @@
+{
+    "fileName": "id_1729074088739_102_propertyChange",
+    "fileType": "change",
+    "changeType": "propertyChange",
+    "moduleName": "",
+    "reference": "com.app.zuiprecorderlist",
+    "packageName": "",
+    "content": {
+        "property": "width",
+        "newValue": "330px"
+    },
+    "selector": {
+        "id": "com.app.zuiprecorderlist::sap.suite.ui.generic.template.ListReport.view.ListReport::ZC_ORDERLIST_PREV--listReport-EquipmentDescription",
+        "idIsLocal": false,
+        "type": "sap.m.Column"
+    },
+    "layer": "CUSTOMER_BASE",
+    "texts": {},
+    "namespace": "apps/com.app.zuiprecorderlist/changes/",
+    "projectId": "",
+    "creation": 1729074088739,
+    "originalLanguage": "",
+    "support": {
+        "generator": "changeUtils: SAPFioriTools",
+        "service": "",
+        "user": "",
+        "sapui5Version": "1.71.64",
+        "sourceChangeFileName": "",
+        "compositeCommand": ""
+    },
+    "oDataInformation": {},
+    "dependentSelector": {},
+    "validAppVersions": {
+        "from": "0.0.1",
+        "to": "0.0.1",
+        "creation": "0.0.1"
+    },
+    "jsOnly": false,
+    "variantReference": "",
+    "appDescriptorChange": false
+}

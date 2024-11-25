@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: com.app.zuiprecorderlist
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: dgw-rt
+          url: http://virutal.https.dgw:443
+          client: '100'
+        app:
+          name: ZUUI_PM_PREODRL
+          description: List of orders for preventive
+          package: ZPM_FIORI
+          transport: DGWK900673
+        exclude:
+          - /test/
